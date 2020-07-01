@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+{% from "govuk/components/back-link/macro.njk"        import govukBackLink %}
+{% from "govuk/components/fieldset/macro.njk"         import govukFieldset %}
+{% from "govuk/components/input/macro.njk"            import govukInput %}
+{% from "govuk/components/button/macro.njk"           import govukButton %}
+
+
+{% block pageTitle %}
+  Service address
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+
+  {{ 
+    govukBackLink({
+      text: "Back",
+      href: previous()
+    }) 
+  }}
+{% endblock %}
+
+{% block content %}
+
+  <!-- DEVS: Ignore the HTML here, it's not correct, but it means the error validation works -->
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="payment" method="GET">
+
+        {% call govukFieldset({
+          legend: {
+            text: "Please provide a service address",
+            classes: "govuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+
+        }) %}
+        <span id="changed-name-hint" class="govuk-hint">
+          This address will replace your home address and will be shown on the public register
+        </span>
+        {{ govukInput({
+            label: {
+              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+            },
+
+            id: "address-line-1",
+            name: "address-line-1",
+            autocomplete: "address-line1"
+          }) }}
+
+        {{ govukInput({
+            label: {
+              html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+            },
+            id: "address-line-2",
+            name: "address-line-2",
+            autocomplete: "address-line2"
+          }) }}
+
+        {{ govukInput({
+            label: {
+              text: "Town or city"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "address-town",
+            name: "address-town",
+            autocomplete: "address-level2"
+          }) }}
+
+        {{ govukInput({
+            label: {
+              text: "County"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "address-county",
+            name: "address-county"
+          }) }}
+
+        {{ 
+          govukInput({
+            label: {
+              text: "Postcode"
+            },
+            classes: "govuk-input--width-10",
+            id: "address-postcode",
+            name: "address-postcode",
+            autocomplete: "postal-code"
+          })
+        }}
+
+        {% endcall %}
+
+      </fieldset>
+
+      {{ 
+        govukButton({
+           text: "Continue",
+           href: next()
+         })
+      }}
+
+    </form>
+  </div>
+</div>
+{% endblock %}

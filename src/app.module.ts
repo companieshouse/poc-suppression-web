@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { LandingController } from './landing/landing.controller';
-import { AddressDetailsController } from './address-details/address-details.controller';
-import { ApplicantDetailsController } from './applicant-details/applicant-details.controller';
-import { DocumentDetailsController } from './document-details/document-details.controller';
-import { ServiceAddressController } from './service-address/service-address.controller';
-import { PaymentController } from './payment/payment.controller';
-import { PaymentReferenceService } from './payment/payment-reference/payment-reference.service';
+import { LandingController } from './suppressions/landing/landing.controller';
+import { AddressDetailsController } from './suppressions/address-details/address-details.controller';
+import { ApplicantDetailsController } from './suppressions/applicant-details/applicant-details.controller';
+import { DocumentDetailsController } from './suppressions/document-details/document-details.controller';
+import { ServiceAddressController } from './suppressions/service-address/service-address.controller';
+import { PaymentController } from './suppressions/payment/payment.controller';
+import { PaymentReferenceService } from './suppressions/payment/payment-reference/payment-reference.service';
 import { CommonModule } from './common/common.module';
 
 @Module({

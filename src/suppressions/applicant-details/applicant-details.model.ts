@@ -1,5 +1,5 @@
 import { applicantDetailsSchema } from './applicant-details.schema';
-import { ValidationErrors } from '../common/decorators/validation-errors.decorator';
+import { ValidationErrors } from 'src/common/decorators/validation-errors.decorator';
 import { ValidationError } from 'src/common/validation/validation-error.model';
 import { Schema } from 'src/common/decorators/schema.decorator';
 

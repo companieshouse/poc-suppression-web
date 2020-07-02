@@ -1,7 +1,7 @@
 import { Get, Res, Inject } from '@nestjs/common';
 import { Response } from 'express';
-import { NavigationControl } from '../navigation/navigation-control';
-import { TemplateConstantProviderService } from '../services/template-constant-provider/template-constant-provider.service';
+import { NavigationControl } from 'app/common/navigation/navigation-control';
+import { TemplateConstantProviderService } from 'app/common/services/template-constant-provider/template-constant-provider.service';
 
 export type BasicControllerData = {
     template: string;

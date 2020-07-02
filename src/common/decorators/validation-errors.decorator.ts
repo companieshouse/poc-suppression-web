@@ -1,5 +1,5 @@
 import { SetMetadata } from '@nestjs/common';
-import { ValidationError } from 'src/common/validation/validation-error.model';
+import { ValidationError } from 'app/common/validation/validation-error.model';
 
 export const VALIDATION_ERROR_METADATA_KEY = 'validation-error:metadata';
 

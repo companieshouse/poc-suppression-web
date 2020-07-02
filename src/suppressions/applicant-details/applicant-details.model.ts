@@ -1,7 +1,7 @@
 import { applicantDetailsSchema } from './applicant-details.schema';
-import { ValidationErrors } from 'src/common/decorators/validation-errors.decorator';
-import { ValidationError } from 'src/common/validation/validation-error.model';
-import { Schema } from 'src/common/decorators/schema.decorator';
+import { ValidationErrors } from 'app/common/decorators/validation-errors.decorator';
+import { ValidationError } from 'app/common/validation/validation-error.model';
+import { Schema } from 'app/common/decorators/schema.decorator';
 
 @Schema(applicantDetailsSchema)
 @ValidationErrors<ApplicantDetailsModel>([

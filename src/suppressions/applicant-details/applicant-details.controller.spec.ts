@@ -1,11 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ApplicantDetailsController } from './applicant-details.controller';
+import { CommonModule } from 'app/common/common.module';
+import { SuppressionsModule } from '../suppressions.module';
 
 describe('ApplicantDetails Controller', () => {
   let controller: ApplicantDetailsController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [CommonModule, SuppressionsModule],
       controllers: [ApplicantDetailsController],
     }).compile();
 

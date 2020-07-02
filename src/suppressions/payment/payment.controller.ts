@@ -1,7 +1,7 @@
 import { Controller } from '@nestjs/common';
-import { PAYMENT_PAGE_URI } from 'src/common/routes/routes.constants';
-import { BaseController } from 'src/common/controllers/base.controller';
-import { NavigationControl } from 'src/common/navigation/navigation-control';
+import { PAYMENT_PAGE_URI } from 'app/common/routes/routes.constants';
+import { BaseController } from 'app/common/controllers/base.controller';
+import { NavigationControl } from 'app/common/navigation/navigation-control';
 import { PaymentReferenceService } from './payment-reference/payment-reference.service';
 import { ConfigService } from '@nestjs/config';
 

@@ -1,10 +1,10 @@
 import { Controller, Post, UsePipes, UseFilters, Redirect, Body } from '@nestjs/common';
-import { APPLICANT_DETAILS_URI, LANDING_PAGE_URI, ADDRESS_DETAILS_URI } from 'src/common/routes/routes.constants';
-import { BaseController } from 'src/common/controllers/base.controller';
+import { APPLICANT_DETAILS_URI, LANDING_PAGE_URI, ADDRESS_DETAILS_URI } from 'app/common/routes/routes.constants';
+import { BaseController } from 'app/common/controllers/base.controller';
 import { ApplicantDetailsModel } from './applicant-details.model';
-import { JoiValidationPipe } from 'src/common/validation/joi-validation.pipe';
-import { JoiValidationExceptionFilter } from 'src/common/filters/joi-validation-exception.filter';
-import { NavigationControl } from 'src/common/navigation/navigation-control';
+import { JoiValidationPipe } from 'app/common/validation/joi-validation.pipe';
+import { JoiValidationExceptionFilter } from 'app/common/filters/joi-validation-exception.filter';
+import { NavigationControl } from 'app/common/navigation/navigation-control';
 
 const template = 'applicant-details';
 const navigation = new NavigationControl(LANDING_PAGE_URI, ADDRESS_DETAILS_URI);

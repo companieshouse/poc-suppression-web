@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { BASE_URI } from 'src/common/routes/routes.constants';
+import { BASE_URI } from 'app/common/routes/routes.constants';
 
 @Injectable()
 export class TemplateConstantProviderService {

@@ -1,7 +1,7 @@
 import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
-import { TypedUnprocessableEntityException } from 'src/common/exceptions/typed-unprocessable-entity.exception';
+import { TypedUnprocessableEntityException } from 'app/common/exceptions/typed-unprocessable-entity.exception';
 import { Response } from 'express';
-import { BasicControllerData } from '../controllers/base.controller';
+import { BasicControllerData } from 'app/common/controllers/base.controller';
 
 @Catch(TypedUnprocessableEntityException)
 export class JoiValidationExceptionFilter implements ExceptionFilter<TypedUnprocessableEntityException<any>> {

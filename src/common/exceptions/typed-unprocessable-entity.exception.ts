@@ -1,7 +1,7 @@
 import { UnprocessableEntityException, Type } from '@nestjs/common';
-import { VALIDATION_ERROR_METADATA_KEY } from 'src/common/decorators/validation-errors.decorator';
-import { ValidationError } from 'src/common/validation/validation-error.model';
-import { ValidationFailed } from '../validation/validation-result.model';
+import { VALIDATION_ERROR_METADATA_KEY } from 'app/common/decorators/validation-errors.decorator';
+import { ValidationError } from 'app/common/validation/validation-error.model';
+import { ValidationFailed } from 'app/common/validation/validation-result.model';
 import Joi from '@hapi/joi';
 
 export class TypedUnprocessableEntityException<T> extends UnprocessableEntityException {

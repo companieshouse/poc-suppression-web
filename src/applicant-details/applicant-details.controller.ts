@@ -1,6 +1,6 @@
 import { Controller, Post, UsePipes, UseFilters, Redirect, Body } from '@nestjs/common';
 import { APPLICANT_DETAILS_URI, LANDING_PAGE_URI, ADDRESS_DETAILS_URI } from 'src/common/routes/routes.constants';
-import { BaseController, BasicControllerData } from 'src/common/controllers/base.controller';
+import { BaseController } from 'src/common/controllers/base.controller';
 import { ApplicantDetailsModel } from './applicant-details.model';
 import { JoiValidationPipe } from 'src/common/validation/joi-validation.pipe';
 import { JoiValidationExceptionFilter } from 'src/common/filters/joi-validation-exception.filter';

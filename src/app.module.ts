@@ -5,6 +5,7 @@ import { ApplicantDetailsController } from './applicant-details/applicant-detail
 import { DocumentDetailsController } from './document-details/document-details.controller';
 import { ServiceAddressController } from './service-address/service-address.controller';
 import { PaymentController } from './payment/payment.controller';
+import { PaymentReferenceService } from './payment/payment-reference/payment-reference.service';
 
 @Module({
   imports: [],
@@ -16,6 +17,6 @@ import { PaymentController } from './payment/payment.controller';
     ServiceAddressController,
     PaymentController
   ],
-  providers: [],
+  providers: [PaymentReferenceService],
 })
 export class AppModule { }

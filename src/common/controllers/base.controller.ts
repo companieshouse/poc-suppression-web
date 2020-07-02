@@ -1,6 +1,7 @@
-import { Get, Res } from '@nestjs/common';
+import { Get, Res, Inject } from '@nestjs/common';
 import { Response } from 'express';
 import { NavigationControl } from '../navigation/navigation-control';
+import { TemplateConstantProviderService } from '../services/template-constant-provider/template-constant-provider.service';
 
 export type BasicControllerData = {
     template: string;
@@ -8,6 +9,9 @@ export type BasicControllerData = {
 }
 
 export class BaseController<T = any> implements BasicControllerData {
+
+    @Inject()
+    public readonly templateConstantsProvider: TemplateConstantProviderService;
 
     constructor(
         public readonly template: string,
@@ -20,7 +24,8 @@ export class BaseController<T = any> implements BasicControllerData {
             this.template,
             {
                 ...this.navigation,
-                ...this.onGetModelData() as any
+                ...this.onGetModelData() as any,
+                ...this.templateConstantsProvider.getServiceConstants()
             }
         )
     }

@@ -6,9 +6,10 @@ import { DocumentDetailsController } from './document-details/document-details.c
 import { ServiceAddressController } from './service-address/service-address.controller';
 import { PaymentController } from './payment/payment.controller';
 import { PaymentReferenceService } from './payment/payment-reference/payment-reference.service';
+import { CommonModule } from './common/common.module';
 
 @Module({
-  imports: [],
+  imports: [CommonModule],
   controllers: [
     LandingController,
     AddressDetailsController,
@@ -17,6 +18,6 @@ import { PaymentReferenceService } from './payment/payment-reference/payment-ref
     ServiceAddressController,
     PaymentController
   ],
-  providers: [PaymentReferenceService],
+  providers: [PaymentReferenceService]
 })
 export class AppModule { }

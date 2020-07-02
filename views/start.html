@@ -8,21 +8,21 @@
   {{
     govukPhaseBanner({
       tag: {
-        text: 'Beta'
+        text: 'Alpha'
       },
       html: 'This is a new service – your <a class="govuk-link" href="https://www.research.net/r/alfp-feedback" target="_blank">feedback</a> will help us to improve it.'
     })
   }}
 {% endblock %}
 
-{% block pageTitle %} Apply to remove your home address from the Companies House register (SR01) {% endblock %}
+{% block pageTitle %} {{ serviceName }} {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form method="post">
         <h1 class="govuk-heading-xl">
-          Apply to remove your home address from the Companies House register (SR01)
+          {{ serviceName }}
         </h1>
         <p class="govuk-body-l">Use this service to apply as an individual under section 1088 to remove your home address, or part of it, from the public Companies House register.
         </p>

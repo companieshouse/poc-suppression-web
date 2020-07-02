@@ -49,7 +49,8 @@
             attributes: {
               spellcheck: "false"
             },
-            errorMessage: getErrorForField('fullName') if getErrorForField
+            value: fullName,
+            errorMessage: getErrorForField('fullName').errorMessage if getErrorForField
           }) 
         }}
 
@@ -69,15 +70,17 @@
             attributes: {
               spellcheck: "false"
             },
-            errorMessage: getErrorForField('email') if getErrorForField
+            value: email,
+            errorMessage: getErrorForField('email').errorMessage if getErrorForField
           }) 
         }}
 
         {{ 
           govukRadios({
             idPrefix: "how-contacted-conditional",
-            name: "how-contacted",
+            name: "secureRegister",
             classes: "govuk-radios--inline",
+            errorMessage: getErrorForField('secureRegister').errorMessage if getErrorForField,
             fieldset: {
               legend: {
                 text: "Are you on the secure register? ",

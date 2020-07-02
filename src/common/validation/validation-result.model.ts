@@ -9,7 +9,7 @@ export class ValidationFailed<T> implements ValidationResultInterface<T> {
     constructor(public readonly validationErrors: ValidationError<T>[]) {
 
     }
-    getErrorForField = (field: keyof T) => this.validationErrors.find(error => error.field === field)
+    getErrorForField = (field: keyof T) => this.validationErrors.find(error => error.field === String(field))
 }
 
 export class ValidationSuccess implements ValidationResultInterface<any> {

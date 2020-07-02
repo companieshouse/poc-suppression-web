@@ -1,5 +1,5 @@
 import { ArgumentMetadata, PipeTransform, Type, Injectable } from '@nestjs/common';
-import { ObjectSchema } from '@hapi/joi';
+import Joi, { ObjectSchema } from '@hapi/joi';
 import { TypedUnprocessableEntityException } from '../exceptions/typed-unprocessable-entity.exception';
 import { SCHEMA_METADATA_KEY } from '../decorators/schema.decorator';
 
@@ -15,13 +15,15 @@ export class JoiValidationPipe<T> implements PipeTransform<T, T> {
 
     const schema: ObjectSchema<T> = Reflect.getMetadata(SCHEMA_METADATA_KEY, this.t);
 
-    const { error } = schema.validate(value, {
+    console.log(value)
+
+    const validationResult: Joi.ValidationResult = schema.validate(value, {
       abortEarly: false,
       convert: false
     });
 
-    if (error) {
-      throw new TypedUnprocessableEntityException<T>(this.t, instance);
+    if (validationResult.error) {
+      throw new TypedUnprocessableEntityException<T>(this.t, instance, validationResult);
     }
     return instance;
   }

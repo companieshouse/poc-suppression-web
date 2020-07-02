@@ -1,14 +1,12 @@
 import { Controller, Render, Get, Post, Redirect } from '@nestjs/common';
-import { BaseController } from 'src/base/base.controller';
-import { LANDING_PAGE_URI, APPLICANT_DETAILS_URI } from 'src/routes/routes.constants';
+import { BaseController } from 'src/common/controllers/base.controller';
+import { LANDING_PAGE_URI, APPLICANT_DETAILS_URI } from 'src/common/routes/routes.constants';
+import { NavigationControl } from 'src/common/navigation/navigation-control';
 
 @Controller(LANDING_PAGE_URI)
 export class LandingController extends BaseController {
 
     constructor() {
-        super('service/start', {
-            next: () => APPLICANT_DETAILS_URI,
-            previous: () => LANDING_PAGE_URI
-        });
+        super('start', new NavigationControl(LANDING_PAGE_URI, APPLICANT_DETAILS_URI));
     }
 }

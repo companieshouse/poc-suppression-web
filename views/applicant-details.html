@@ -4,12 +4,20 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
 
 
 {% block pageTitle %} Applicant's details {% endblock %}
 
 {% block beforeContent %}
-  {% include "includes/phase-banner.html" %}
+  {{
+    govukPhaseBanner({
+      tag: {
+        text: 'Beta'
+      },
+      html: 'This is a new service – your <a class="govuk-link" href="https://www.research.net/r/alfp-feedback" target="_blank">feedback</a> will help us to improve it.'
+    })
+  }}
 
   {{ 
     govukBackLink({
@@ -36,11 +44,12 @@
             },
             classes: "govuk-input--width-20",
             id: "full-name",
-            name: "full-name",
+            name: "fullName",
             autocomplete: "name",
             attributes: {
               spellcheck: "false"
-            }
+            },
+            errorMessage: getErrorForField('fullName') if getErrorForField
           }) 
         }}
 
@@ -59,7 +68,8 @@
             autocomplete: "email",
             attributes: {
               spellcheck: "false"
-            }
+            },
+            errorMessage: getErrorForField('email') if getErrorForField
           }) 
         }}
 
@@ -94,10 +104,9 @@
 
         {{ 
           govukButton({
-            text: "Continue",
-            href: next()
-          }) 
-         }}
+            text: "Continue"
+         }) 
+        }}
       </form>
 
     </div>

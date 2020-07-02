@@ -4,6 +4,7 @@
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from 'govuk/components/phase-banner/macro.njk' import govukPhaseBanner %}
 
 
 {% block pageTitle %}
@@ -11,7 +12,14 @@
 {% endblock %}
 
 {% block beforeContent %}
-  {% include "includes/phase-banner.html" %}
+  {{
+    govukPhaseBanner({
+      tag: {
+        text: 'Beta'
+      },
+      html: 'This is a new service – your <a class="govuk-link" href="https://www.research.net/r/alfp-feedback" target="_blank">feedback</a> will help us to improve it.'
+    })
+  }}
 
   {{ 
     govukBackLink({

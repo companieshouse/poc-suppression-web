@@ -1,14 +1,12 @@
-import { Controller, Get, Render } from '@nestjs/common';
-import { PAYMENT_PAGE_URI } from 'src/routes/routes.constants';
-import { BaseController } from 'src/base/base.controller';
+import { Controller } from '@nestjs/common';
+import { PAYMENT_PAGE_URI } from 'src/common/routes/routes.constants';
+import { BaseController } from 'src/common/controllers/base.controller';
+import { NavigationControl } from 'src/common/navigation/navigation-control';
 
 @Controller(PAYMENT_PAGE_URI)
 export class PaymentController extends BaseController {
 
     constructor() {
-        super('service/payment', {
-            next: () => PAYMENT_PAGE_URI,
-            previous: () => PAYMENT_PAGE_URI
-        });
+        super('payment', new NavigationControl(PAYMENT_PAGE_URI, PAYMENT_PAGE_URI));
     }
 }

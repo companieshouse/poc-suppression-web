@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { BaseController } from './base.controller';
-import { CommonModule } from '../common.module';
+import { CommonModule } from 'app/common/common.module';
 
 describe('Base Controller', () => {
   let controller: BaseController;

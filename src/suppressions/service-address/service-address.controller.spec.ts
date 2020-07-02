@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ServiceAddressController } from './service-address.controller';
-import { SuppressionsModule } from '../suppressions.module';
+import { SuppressionsModule } from 'app/suppressions/suppressions.module';
 import { CommonModule } from 'app/common/common.module';
 
 describe('ServiceAddress Controller', () => {

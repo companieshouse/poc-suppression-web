@@ -21,5 +21,5 @@ describe('PaymentReferenceService', () => {
 
   it('should return a 7 digit number string', () => {
     expect(service.generateNewReference(7).length).toBe(7);
-  })
+  });
 });

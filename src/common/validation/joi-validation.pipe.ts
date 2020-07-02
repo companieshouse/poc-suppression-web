@@ -5,19 +5,17 @@ import { SCHEMA_METADATA_KEY } from 'app/common/decorators/schema.decorator';
 
 @Injectable()
 export class JoiValidationPipe<T> implements PipeTransform<T, T> {
-
-  constructor(private t: Type<T>) { }
+  constructor(private t: Type<T>) {}
 
   public transform(value: T, metadata: ArgumentMetadata): T {
-
-    let instance: T = new this.t();
+    const instance: T = new this.t();
     Object.assign(instance, value);
 
     const schema: ObjectSchema<T> = Reflect.getMetadata(SCHEMA_METADATA_KEY, this.t);
 
     const validationResult: Joi.ValidationResult = schema.validate(value, {
       abortEarly: false,
-      convert: false
+      convert: false,
     });
 
     if (validationResult.error) {
@@ -26,4 +24,3 @@ export class JoiValidationPipe<T> implements PipeTransform<T, T> {
     return instance;
   }
 }
-

@@ -5,8 +5,7 @@ import { NavigationControl } from 'app/common/navigation/navigation-control';
 
 @Controller(SERVICE_ADDRESS_PAGE_URI)
 export class ServiceAddressController extends BaseController {
-
-    constructor() {
-        super('service-address', new NavigationControl(DOCUMENT_DETAILS_URI, PAYMENT_PAGE_URI));
-    }
+  constructor() {
+    super('service-address', new NavigationControl(DOCUMENT_DETAILS_URI, PAYMENT_PAGE_URI));
+  }
 }

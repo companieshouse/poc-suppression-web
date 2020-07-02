@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ApplicantDetailsController } from './applicant-details.controller';
 import { CommonModule } from 'app/common/common.module';
-import { SuppressionsModule } from '../suppressions.module';
+import { SuppressionsModule } from 'app/suppressions/suppressions.module';
 
 describe('ApplicantDetails Controller', () => {
   let controller: ApplicantDetailsController;

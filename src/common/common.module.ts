@@ -3,10 +3,12 @@ import { TemplateConstantProviderService } from './services/template-constant-pr
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [ConfigModule.forRoot({
-    isGlobal: true
-  })],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+  ],
   providers: [TemplateConstantProviderService],
-  exports: [TemplateConstantProviderService]
+  exports: [TemplateConstantProviderService],
 })
-export class CommonModule { }
+export class CommonModule {}

@@ -1,10 +1,10 @@
 export class ValidationError<T> {
-    public readonly errorMessage: {
-        text: string;
+  public readonly errorMessage: {
+    text: string;
+  };
+  constructor(public readonly field: keyof T, text: string) {
+    this.errorMessage = {
+      text,
     };
-    constructor(public readonly field: keyof T, text: string) {
-        this.errorMessage = {
-            text
-        };
-    }
+  }
 }

@@ -11,16 +11,15 @@ const navigation = new NavigationControl(LANDING_PAGE_URI, ADDRESS_DETAILS_URI);
 
 @Controller(APPLICANT_DETAILS_URI)
 export class ApplicantDetailsController extends BaseController<ApplicantDetailsModel> {
+  constructor() {
+    super(template, navigation);
+  }
 
-    constructor() {
-        super(template, navigation);
-    }
-
-    @Post()
-    @UsePipes(new JoiValidationPipe(ApplicantDetailsModel))
-    @UseFilters(new JoiValidationExceptionFilter({ template, navigation }))
-    @Redirect(navigation.next())
-    public onPost(@Body() _: ApplicantDetailsModel): void { }
-
-
+  @Post()
+  @UsePipes(new JoiValidationPipe(ApplicantDetailsModel))
+  @UseFilters(new JoiValidationExceptionFilter({ template, navigation }))
+  @Redirect(navigation.next())
+  public onPost(@Body() body: ApplicantDetailsModel): ApplicantDetailsModel {
+    return body;
+  }
 }

@@ -5,16 +5,16 @@ import { BasicControllerData } from 'app/common/controllers/base.controller';
 
 @Catch(TypedUnprocessableEntityException)
 export class JoiValidationExceptionFilter implements ExceptionFilter<TypedUnprocessableEntityException<any>> {
-  constructor(private readonly controller: BasicControllerData) { }
+  constructor(private readonly controller: BasicControllerData) {}
 
-  public catch(exception: TypedUnprocessableEntityException<any>, host: ArgumentsHost) {
+  public catch(exception: TypedUnprocessableEntityException<any>, host: ArgumentsHost): void {
     return host
       .switchToHttp()
       .getResponse<Response>()
       .render(this.controller.template, {
         ...exception.getValidationErrors(),
         ...this.controller.navigation,
-        ...exception.model
+        ...exception.model,
       });
   }
 }

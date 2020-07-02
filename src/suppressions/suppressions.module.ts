@@ -9,15 +9,15 @@ import { PaymentReferenceService } from './payment/payment-reference/payment-ref
 import { CommonModule } from 'app/common/common.module';
 
 @Module({
-    imports: [CommonModule],
-    controllers: [
-        LandingController,
-        AddressDetailsController,
-        ApplicantDetailsController,
-        DocumentDetailsController,
-        ServiceAddressController,
-        PaymentController
-    ],
-    providers: [PaymentReferenceService]
+  imports: [CommonModule],
+  controllers: [
+    LandingController,
+    AddressDetailsController,
+    ApplicantDetailsController,
+    DocumentDetailsController,
+    ServiceAddressController,
+    PaymentController,
+  ],
+  providers: [PaymentReferenceService],
 })
-export class SuppressionsModule { }
+export class SuppressionsModule {}

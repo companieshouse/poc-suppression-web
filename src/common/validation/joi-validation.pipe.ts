@@ -15,8 +15,6 @@ export class JoiValidationPipe<T> implements PipeTransform<T, T> {
 
     const schema: ObjectSchema<T> = Reflect.getMetadata(SCHEMA_METADATA_KEY, this.t);
 
-    console.log(value)
-
     const validationResult: Joi.ValidationResult = schema.validate(value, {
       abortEarly: false,
       convert: false

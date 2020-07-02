@@ -18,7 +18,7 @@ export class ApplicantDetailsController extends BaseController<ApplicantDetailsM
 
     @Post()
     @UsePipes(new JoiValidationPipe(ApplicantDetailsModel))
-    @UseFilters(new JoiValidationExceptionFilter(ApplicantDetailsModel, {
+    @UseFilters(new JoiValidationExceptionFilter({
         template,
         navigation
     }))

@@ -11,7 +11,7 @@ import * as Joi from '@hapi/joi';
         GOV_PAY_URL: Joi.string().required(),
         NODE_ENV: Joi.string()
           .required()
-          .valid('dev', 'prod'),
+          .valid('dev', 'prod', 'test'),
       }),
     }),
   ],

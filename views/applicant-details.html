@@ -50,7 +50,7 @@
               spellcheck: "false"
             },
             value: fullName,
-            errorMessage: getErrorForField('fullName').errorMessage if getErrorForField
+            errorMessage: validationErrors.fullName if validationErrors
           }) 
         }}
 
@@ -71,7 +71,7 @@
               spellcheck: "false"
             },
             value: email,
-            errorMessage: getErrorForField('email').errorMessage if getErrorForField
+            errorMessage: validationErrors.email if validationErrors
           }) 
         }}
 
@@ -80,7 +80,7 @@
             idPrefix: "how-contacted-conditional",
             name: "secureRegister",
             classes: "govuk-radios--inline",
-            errorMessage: getErrorForField('secureRegister').errorMessage if getErrorForField,
+            errorMessage: validationErrors.secureRegister if validationErrors,
             fieldset: {
               legend: {
                 text: "Are you on the secure register? ",

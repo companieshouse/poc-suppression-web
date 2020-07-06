@@ -1,39 +1,17 @@
-import { UnprocessableEntityException, Type } from '@nestjs/common';
-import { VALIDATION_ERROR_METADATA_KEY } from 'app/common/decorators/validation-errors.decorator';
-import { ValidationError } from 'app/common/validation/validation-error.model';
-import { ValidationFailed } from 'app/common/validation/validation-result.model';
-import Joi from '@hapi/joi';
+import { UnprocessableEntityException } from '@nestjs/common';
+import { ValidationResult } from 'app/common/validation/validation.types';
+import { ValidationError } from 'class-validator';
+import { TemplateValidationError } from '../validation/validation-error.model';
 
 export class TypedUnprocessableEntityException<T> extends UnprocessableEntityException {
-  constructor(public readonly type: Type<T>, public readonly model: T, public readonly error: Joi.ValidationResult) {
-    super(`Validation error occurred: ${JSON.stringify(Reflect.getMetadata(VALIDATION_ERROR_METADATA_KEY, model))}`);
+  constructor(public readonly validationErrors: ValidationError[]) {
+    super(`Validation error occurred: ${JSON.stringify(validationErrors)}`);
   }
 
-  public getValidationErrors(): ValidationFailed<T> {
-    const errors: ValidationError<T>[] = Reflect.getMetadata(VALIDATION_ERROR_METADATA_KEY, this.type);
-
-    const paths: string[] = this.getPaths(this.error.error);
-
-    const newErrors: ValidationError<T>[] = [];
-
-    for (const path of paths) {
-      const error = errors.find(err => err.field.toString() === path);
-      if (error) {
-        newErrors.push(error);
-      }
-    }
-    return new ValidationFailed(newErrors);
-  }
-
-  private getPaths(error: Joi.ValidationError): string[] {
-    const paths: string[] = error.details.map(_ => _.path.toString());
-    const newPaths: string[] = [];
-
-    for (const path of paths) {
-      if (!newPaths.includes(path)) {
-        newPaths.push(path);
-      }
-    }
-    return newPaths;
+  public getValidationErrors(): ValidationResult<T> {
+    return this.validationErrors.reduceRight((p, c) => {
+      p[c.property] = new TemplateValidationError(Object.values(c.constraints).join(', '));
+      return p;
+    }, {} as ValidationResult<T>);
   }
 }

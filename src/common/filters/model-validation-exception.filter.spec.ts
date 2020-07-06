@@ -1,10 +1,10 @@
-import { JoiValidationExceptionFilter } from './joi-validation-exception.filter';
+import { ModelValidationExceptionFilter } from './model-validation-exception.filter';
 import { NavigationControl } from 'app/common/navigation/navigation-control';
 
-describe('JoiValidationExceptionFilter', () => {
+describe('ModelValidationExceptionFilter', () => {
   it('should be defined', () => {
     expect(
-      new JoiValidationExceptionFilter({
+      new ModelValidationExceptionFilter({
         navigation: new NavigationControl('', ''),
         template: '',
       }),

@@ -81,6 +81,7 @@
             name: "secureRegister",
             classes: "govuk-radios--inline",
             errorMessage: validationErrors.secureRegister if validationErrors,
+            value: secureRegister,
             fieldset: {
               legend: {
                 text: "Are you on the secure register? ",
@@ -93,11 +94,13 @@
             },
             items: [
               {
+                checked: secureRegister == "yes",
                 value: "yes",
                 text: "Yes"
 
               },
               {
+                checked: secureRegister == "no",
                 value: "no",
                 text: "No"
               }

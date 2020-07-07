@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { TemplateConstantProviderService } from './services/template-constant-provider/template-constant-provider.service';
+import { TemplateConstantProviderService } from 'app/common/services/template-constant-provider/template-constant-provider.service';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from '@hapi/joi';
 

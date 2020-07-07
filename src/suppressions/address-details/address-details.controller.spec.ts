@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AddressDetailsController } from './address-details.controller';
 import { CommonModule } from 'app/common/common.module';
 import { SuppressionsModule } from 'app/suppressions/suppressions.module';
+import { AddressDetailsController } from './address-details.controller';
 
 describe('AddressDetails Controller', () => {
   let controller: AddressDetailsController;

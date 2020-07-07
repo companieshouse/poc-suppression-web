@@ -1,15 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { LandingController } from './landing.controller';
-import { CommonModule } from 'app/common/common.module';
-import { SuppressionsModule } from 'app/suppressions/suppressions.module';
+import { LandingController } from 'app/suppressions/landing/landing.controller';
+import { SuppressionsModule } from '../suppressions.module';
 
 describe('Index Controller', () => {
   let controller: LandingController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [CommonModule, SuppressionsModule],
-      controllers: [LandingController],
+      imports: [SuppressionsModule],
     }).compile();
 
     controller = module.get<LandingController>(LandingController);

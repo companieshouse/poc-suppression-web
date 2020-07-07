@@ -14,9 +14,9 @@ export class SessionMiddleware implements NestMiddleware<Request, Response> {
 
   constructor(private readonly configService: ConfigService) {
     this.cookieConfig = {
-      cookieName: configService.get('COOKIE_NAME'),
-      cookieSecret: configService.get('COOKIE_SECRET'),
-      cookieDomain: configService.get('COOKIE_DOMAIN'),
+      cookieName: configService.get('COOKIE_NAME')!,
+      cookieSecret: configService.get('COOKIE_SECRET')!,
+      cookieDomain: configService.get('COOKIE_DOMAIN')!,
     };
 
     this.sessionStore = new SessionStore(
@@ -35,7 +35,7 @@ export class SessionMiddleware implements NestMiddleware<Request, Response> {
 
   private prepareSession(req: Request, res: Response): void {
     if (!req.cookies[this.cookieConfig.cookieName]) {
-      const cookie: Cookie = Cookie.createNew(this.configService.get(this.cookieConfig.cookieSecret));
+      const cookie: Cookie = Cookie.createNew(this.configService.get(this.cookieConfig.cookieSecret)!);
 
       req.session = new Session({
         '.id': cookie.sessionId,

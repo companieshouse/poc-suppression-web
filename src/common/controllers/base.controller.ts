@@ -2,8 +2,6 @@ import { Get, Res, Inject, Req } from '@nestjs/common';
 import { Response, Request } from 'express';
 import { NavigationControl } from 'app/common/navigation/navigation-control';
 import { TemplateConstantProviderService } from 'app/common/services/template-constant-provider/template-constant-provider.service';
-import { SuppressionsJourney } from 'app/suppressions/model/suppressions.model';
-import { APP_SESSION_DATA_KEY } from 'app/app.module';
 import { Session } from 'ch-node-session-handler';
 import { ConfigService } from '@nestjs/config';
 
@@ -39,20 +37,24 @@ export class BaseController<T = any> implements BasicControllerData {
     return {} as T;
   }
 
-  protected addToSession(req: Request, map: Partial<SuppressionsJourney>): void {
+  protected addToSession<A>(dataKey: string, req: Request, map: Partial<A>): void {
     const session: Session | undefined = req.session;
 
     if (!session) {
       return;
     }
 
-    const suppressionsJourney = session.getExtraData<SuppressionsJourney>(APP_SESSION_DATA_KEY) || {};
+    const data = session.getExtraData<A>(dataKey) || ({} as A);
+
+    if (!data) {
+      return;
+    }
 
     for (const key in map) {
       if (map.hasOwnProperty(key)) {
-        suppressionsJourney[key] = map[key];
+        data[key] = map[key] as any;
       }
     }
-    req.session?.setExtraData<SuppressionsJourney>(APP_SESSION_DATA_KEY, suppressionsJourney as SuppressionsJourney);
+    req.session?.setExtraData<A>(dataKey, data);
   }
 }

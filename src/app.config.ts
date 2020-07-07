@@ -12,7 +12,7 @@ export function configNestExpressApp(app: NestExpressApplication): NestExpressAp
   app.use('/public', express.static(join(__dirname, '..', 'public')));
   app.use('/', express.static(join(__dirname, '..', 'node_modules/govuk-frontend/')));
 
-  const env: string = app.get(ConfigService).get('NODE_ENV');
+  const env: string = app.get(ConfigService).get('NODE_ENV')!;
 
   nunjucks.configure(['views', 'node_modules/govuk-frontend'], {
     autoescape: true,

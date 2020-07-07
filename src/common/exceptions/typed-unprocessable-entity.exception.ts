@@ -1,7 +1,7 @@
 import { UnprocessableEntityException } from '@nestjs/common';
 import { ValidationResult } from 'app/common/validation/validation.types';
 import { ValidationError } from 'class-validator';
-import { TemplateValidationError } from '../validation/validation-error.model';
+import { TemplateValidationError } from 'app/common/validation/validation-error.model';
 
 export class TypedUnprocessableEntityException<T> extends UnprocessableEntityException {
   constructor(public readonly validationErrors: ValidationError[]) {
@@ -10,7 +10,7 @@ export class TypedUnprocessableEntityException<T> extends UnprocessableEntityExc
 
   public getValidationErrors(): ValidationResult<T> {
     return this.validationErrors.reduceRight((p, c) => {
-      p[c.property] = new TemplateValidationError(Object.values(c.constraints).join(', '));
+      p[c.property] = new TemplateValidationError(Object.values(c.constraints || {}).join(', '));
       return p;
     }, {} as ValidationResult<T>);
   }

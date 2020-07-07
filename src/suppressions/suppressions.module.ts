@@ -1,11 +1,11 @@
 import { Module, NestModule, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
-import { LandingController } from './landing/landing.controller';
-import { AddressDetailsController } from './address-details/address-details.controller';
-import { ApplicantDetailsController } from './applicant-details/applicant-details.controller';
-import { DocumentDetailsController } from './document-details/document-details.controller';
-import { ServiceAddressController } from './service-address/service-address.controller';
-import { PaymentController } from './payment/payment.controller';
-import { PaymentReferenceService } from './payment/payment-reference/payment-reference.service';
+import { LandingController } from 'app/suppressions/landing/landing.controller';
+import { AddressDetailsController } from 'app/suppressions/address-details/address-details.controller';
+import { ApplicantDetailsController } from 'app/suppressions/applicant-details/applicant-details.controller';
+import { DocumentDetailsController } from 'app/suppressions/document-details/document-details.controller';
+import { ServiceAddressController } from 'app/suppressions/service-address/service-address.controller';
+import { PaymentController } from 'app/suppressions/payment/payment.controller';
+import { PaymentReferenceService } from 'app/suppressions/payment/payment-reference/payment-reference.service';
 import { CommonModule } from 'app/common/common.module';
 import { SessionMiddleware } from 'app/common/middleware/session.middleware';
 import { LANDING_PAGE_URI } from 'app/common/routes/routes.constants';

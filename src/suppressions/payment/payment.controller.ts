@@ -2,13 +2,13 @@ import { Controller } from '@nestjs/common';
 import { PAYMENT_PAGE_URI } from 'app/common/routes/routes.constants';
 import { BaseController } from 'app/common/controllers/base.controller';
 import { NavigationControl } from 'app/common/navigation/navigation-control';
-import { PaymentReferenceService } from './payment-reference/payment-reference.service';
+import { PaymentReferenceService } from 'app/suppressions/payment/payment-reference/payment-reference.service';
 import { ConfigService } from '@nestjs/config';
 
 @Controller(PAYMENT_PAGE_URI)
 export class PaymentController extends BaseController {
   constructor(private paymentReference: PaymentReferenceService, configService: ConfigService) {
-    super('payment', new NavigationControl(PAYMENT_PAGE_URI, configService.get('GOV_PAY_URL')));
+    super('payment', new NavigationControl(PAYMENT_PAGE_URI, configService.get<string>('GOV_PAY_URL')!));
   }
 
   public onGetModelData(): any {

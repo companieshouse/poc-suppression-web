@@ -17,7 +17,7 @@ import { TypedUnprocessableEntityException } from 'app/common/exceptions/typed-u
 import { ModelValidationExceptionFilter } from 'app/common/filters/model-validation-exception.filter';
 import { Request } from 'express';
 import { APP_SESSION_DATA_KEY } from 'app/app.module';
-import { SuppressionsJourney } from 'app/suppressions/model/suppressions.model';
+import { SuppressionsJourney } from 'app/suppressions/model/suppressions-journey.model';
 import { Session } from 'ch-node-session-handler';
 
 const navigation = new NavigationControl(APPLICANT_DETAILS_URI, DOCUMENT_DETAILS_URI);

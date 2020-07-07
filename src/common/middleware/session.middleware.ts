@@ -47,7 +47,7 @@ export class SessionMiddleware implements NestMiddleware<Request, Response> {
         expires: Number(Date.now().toPrecision(10)) / 1000 + 3600 * 1000,
       });
 
-      res.cookie(this.configService.get(this.cookieConfig.cookieName), cookie.value);
+      res.cookie(this.cookieConfig.cookieName, cookie.value);
 
       this.sessionStore.store(cookie, req.session.data, 3600);
     }

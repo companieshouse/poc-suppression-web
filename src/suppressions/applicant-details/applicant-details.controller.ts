@@ -34,8 +34,8 @@ export class ApplicantDetailsController extends BaseController<ApplicantDetailsM
     return applicantDetails;
   }
 
-  public onGetModelDataFromSession(session: Session): ApplicantDetailsModel | {} {
+  public onGetModelDataFromSession(session: Session | undefined): ApplicantDetailsModel | {} {
     super.onGetModelDataFromSession(session);
-    return session.getExtraData<SuppressionsJourney>(APP_SESSION_DATA_KEY).applicantDetails;
+    return session?.getExtraData<SuppressionsJourney>(APP_SESSION_DATA_KEY).applicantDetails;
   }
 }

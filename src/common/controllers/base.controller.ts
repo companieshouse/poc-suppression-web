@@ -35,10 +35,7 @@ export class BaseController<T = any> implements BasicControllerData {
     return (this.onGetModelDataFromSession(session) as T) || {};
   }
 
-  public onGetModelDataFromSession(session: Session): T | {} {
-    if (!session) {
-      return;
-    }
+  public onGetModelDataFromSession(session: Session | undefined): T | {} {
     return {} as T;
   }
 

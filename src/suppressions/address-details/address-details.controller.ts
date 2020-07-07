@@ -45,7 +45,6 @@ export class AddressDetailsController extends BaseController<AddressDetailsModel
   }
 
   public onGetModelDataFromSession(session: Session): AddressDetailsModel | {} {
-    super.onGetModelDataFromSession(session);
     return session?.getExtraData<SuppressionsJourney>(APP_SESSION_DATA_KEY)?.addressDetails || {};
   }
 }

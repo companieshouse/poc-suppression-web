@@ -38,9 +38,9 @@ $ npm install
 
 ## Running the app
 
-```env
-# Create a .env file in the root directory of the project and add
-GOV_PAY_URL=#
+```bash
+# Start an instance of redis
+docker run -p 6379:6379 -d redis
 ```
 
 ```bash
@@ -73,9 +73,9 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## Stay in touch
 
--   Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
--   Website - [https://nestjs.com](https://nestjs.com/)
--   Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 

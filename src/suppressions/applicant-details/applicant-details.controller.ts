@@ -8,7 +8,7 @@ import { TypedUnprocessableEntityException } from 'app/common/exceptions/typed-u
 import { ValidationError } from 'class-validator';
 import { Request } from 'express';
 import { Session } from 'ch-node-session-handler';
-import { SuppressionsJourney } from 'app/suppressions/model/suppressions-journey.model';
+import { Suppression } from 'app/suppressions/model/suppression.model';
 import { APP_SESSION_DATA_KEY } from 'app/app.module';
 
 const template = 'applicant-details';
@@ -35,6 +35,6 @@ export class ApplicantDetailsController extends BaseController<ApplicantDetailsM
   }
 
   public onGetModelDataFromSession(session: Session | undefined): ApplicantDetailsModel | {} {
-    return session?.getExtraData<SuppressionsJourney>(APP_SESSION_DATA_KEY)?.applicantDetails || {};
+    return session?.getExtraData<Suppression>(APP_SESSION_DATA_KEY)?.applicantDetails || {};
   }
 }

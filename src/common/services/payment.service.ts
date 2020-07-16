@@ -13,10 +13,9 @@ export class PaymentService {
         const request: any = {
             reference: ref,
             state: 'someState',
-            resource: `http://localhost/companies/${companyNumber}/suppressions/${ref}`,
+            resource: `http://localhost/companies/${companyNumber}/suppressions/${ref}/payment`,
             redirect_uri: 'http://localhost/suppress-my-details/confirmation'
         };
-
 
         return await this.httpService.post(url, request, { headers: {
                 'Accept': 'application/json',
@@ -25,7 +24,7 @@ export class PaymentService {
             }})
             .toPromise()
             .then((res) => {
-                if (res.status === 200) {
+                if (res.status === 201) {
                     const data = res.data;
                     return data.links.journey;
                 }
@@ -36,7 +35,6 @@ export class PaymentService {
                     throw err;
                 }
             });
-
     }
 
 }

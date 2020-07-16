@@ -60,7 +60,7 @@
             classes: "govuk-input--width-10",
             id: "company-name",
             name: "companyName",
-            value: "companyName",
+            value: companyName,
             errorMessage: validationErrors.companyName if validationErrors
           })
         }}
@@ -74,7 +74,7 @@
             classes: "govuk-input--width-10",
             id: "company-number",
             name: "companyNumber",
-            value: "companyNumber",
+            value: companyNumber,
             errorMessage: validationErrors.companyNumber if validationErrors
           }) 
         }}
@@ -91,7 +91,7 @@
             classes: "govuk-input--width-10",
             id: "type",
             name: "type",
-            value: "type",
+            value: type,
             errorMessage: validationErrors.type if validationErrors
           }) 
         }}
@@ -110,22 +110,21 @@
             hint: {
               text: "For example, 12 11 2007"
             },
-            errorMessage: validationErrors.registrationDate if validationErrors,
             items: [
             {
-            classes: "govuk-input--width-2 govuk-input--error",
+            classes: "govuk-input--width-2",
             name: "day",
-            value: "6"
+            value: day
             },
             {
-            classes: "govuk-input--width-2 govuk-input--error",
+            classes: "govuk-input--width-2",
             name: "month",
-            value: "3"
+            value: month
             },
             {
-            classes: "govuk-input--width-4 govuk-input--error",
+            classes: "govuk-input--width-4",
             name: "year",
-            value: "2076"
+            value: year
             }
             ]
           }) 

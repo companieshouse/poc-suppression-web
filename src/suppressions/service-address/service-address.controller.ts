@@ -43,6 +43,9 @@ export class ServiceAddressController extends BaseController {
     @Redirect(navigation.next())
     public async onPost(@Body() newAddressDetails: AddressDetailsModel, @Req() request: Request): Promise<void> {
 
+        this.addToSession(APP_SESSION_DATA_KEY, request, {
+            newAddressDetails: newAddressDetails
+        });
       // TO-DO get access token for API call
 
         const response: SuppressionResponseModel | void = await this.suppressionService.createSuppression(this.onGetModelData(request))
@@ -50,8 +53,7 @@ export class ServiceAddressController extends BaseController {
         if (response) {
             this.addToSession(APP_SESSION_DATA_KEY, request, {
                 reference: response.id,
-                links: response.links,
-                newAddressDetails: newAddressDetails
+                links: response.links
             });
         }
     }

@@ -53,7 +53,7 @@
             },
 
             id: "address-line-1",
-            value: addressLine1,
+            value: newAddressDetails.addressLine1,
             name: "addressLine1",
             autocomplete: "address-line1",
             errorMessage: validationErrors.addressLine1 if validationErrors
@@ -64,7 +64,7 @@
               html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
             },
             id: "address-line-2",
-            value: addressLine2,
+            value: newAddressDetails.addressLine2,
             name: "addressLine2",
             autocomplete: "address-line2",
             errorMessage: validationErrors.addressLine2 if validationErrors
@@ -76,7 +76,7 @@
             },
             classes: "govuk-!-width-two-thirds",
             id: "address-town",
-            value: townOrCity,
+            value: newAddressDetails.townOrCity,
             name: "townOrCity",
             autocomplete: "address-level2",
             errorMessage: validationErrors.townOrCity if validationErrors
@@ -88,7 +88,7 @@
             },
             classes: "govuk-!-width-two-thirds",
             id: "address-county",
-            value: county,
+            value: newAddressDetails.county,
             name: "county",
             errorMessage: validationErrors.county if validationErrors
           }) }}
@@ -100,7 +100,7 @@
             },
             classes: "govuk-input--width-10",
             id: "address-postcode",
-            value: postCode,
+            value: newAddressDetails.postCode,
             name: "postCode",
             autocomplete: "postal-code",
             errorMessage: validationErrors.postCode if validationErrors

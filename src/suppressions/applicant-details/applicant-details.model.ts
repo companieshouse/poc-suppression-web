@@ -6,7 +6,4 @@ export class ApplicantDetailsModel {
 
   @IsEmail({}, { message: 'Invalid Email' })
   public readonly email: string;
-
-  @IsIn(['yes', 'no'], { message: 'An option must be selected' })
-  public readonly secureRegister: 'yes' | 'no';
 }

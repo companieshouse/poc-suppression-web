@@ -17,7 +17,7 @@ import { TypedUnprocessableEntityException } from 'app/common/exceptions/typed-u
 import { ModelValidationExceptionFilter } from 'app/common/filters/model-validation-exception.filter';
 import { Request } from 'express';
 import { APP_SESSION_DATA_KEY } from 'app/app.module';
-import { SuppressionsJourney } from 'app/suppressions/model/suppressions-journey.model';
+import { Suppression } from 'app/suppressions/model/suppression.model';
 import { Session } from 'ch-node-session-handler';
 
 const navigation = new NavigationControl(APPLICANT_DETAILS_URI, DOCUMENT_DETAILS_URI);
@@ -39,12 +39,12 @@ export class AddressDetailsController extends BaseController<AddressDetailsModel
   )
   @UseFilters(new ModelValidationExceptionFilter({ template, navigation }))
   @Redirect(navigation.next())
-  public onPost(@Body() addressDetails: AddressDetailsModel, @Req() request: Request): AddressDetailsModel {
-    this.addToSession(APP_SESSION_DATA_KEY, request, { addressDetails });
-    return addressDetails;
+  public onPost(@Body() oldAddressDetails: AddressDetailsModel, @Req() request: Request): AddressDetailsModel {
+    this.addToSession(APP_SESSION_DATA_KEY, request, { oldAddressDetails: oldAddressDetails });
+    return oldAddressDetails;
   }
 
   public onGetModelDataFromSession(session: Session): AddressDetailsModel | {} {
-    return session?.getExtraData<SuppressionsJourney>(APP_SESSION_DATA_KEY)?.addressDetails || {};
+    return session?.getExtraData<Suppression>(APP_SESSION_DATA_KEY)?.oldAddressDetails || {};
   }
 }

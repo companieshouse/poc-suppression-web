@@ -34,7 +34,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="service-address" method="GET">
+      <form method="post">
 
         <h1 class="govuk-heading-l">
           Document details
@@ -58,8 +58,10 @@
               isPageHeading: false
             },
             classes: "govuk-input--width-10",
-            id: "event-name",
-            name: "event-name"
+            id: "company-name",
+            name: "companyName",
+            value: companyName,
+            errorMessage: validationErrors.companyName if validationErrors
           })
         }}
         {{ 
@@ -70,8 +72,10 @@
               isPageHeading: false
             },
             classes: "govuk-input--width-10",
-            id: "event-name",
-            name: "event-name"
+            id: "company-number",
+            name: "companyNumber",
+            value: companyNumber,
+            errorMessage: validationErrors.companyNumber if validationErrors
           }) 
         }}
         {{ 
@@ -85,8 +89,10 @@
               text: "Please give the document type or, where that document is a form, the number and title of that form."
             },
             classes: "govuk-input--width-10",
-            id: "event-name",
-            name: "event-name"
+            id: "type",
+            name: "type",
+            value: type,
+            errorMessage: validationErrors.type if validationErrors
           }) 
         }}
 
@@ -103,14 +109,30 @@
             },
             hint: {
               text: "For example, 12 11 2007"
+            },
+            items: [
+            {
+            classes: "govuk-input--width-2",
+            name: "day",
+            value: day
+            },
+            {
+            classes: "govuk-input--width-2",
+            name: "month",
+            value: month
+            },
+            {
+            classes: "govuk-input--width-4",
+            name: "year",
+            value: year
             }
+            ]
           }) 
         }}
 
         {{ 
           govukButton({
-            text: "Continue",
-            href: next()
+            text: "Continue"
           }) 
         }}
       </form>

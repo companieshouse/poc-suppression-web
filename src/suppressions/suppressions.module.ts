@@ -1,4 +1,4 @@
-import { Module, NestModule, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
+import {Module, NestModule, MiddlewareConsumer, RequestMethod, HttpModule} from '@nestjs/common';
 import { LandingController } from 'app/suppressions/landing/landing.controller';
 import { AddressDetailsController } from 'app/suppressions/address-details/address-details.controller';
 import { ApplicantDetailsController } from 'app/suppressions/applicant-details/applicant-details.controller';
@@ -10,8 +10,16 @@ import { CommonModule } from 'app/common/common.module';
 import { SessionMiddleware } from 'app/common/middleware/session.middleware';
 import { LANDING_PAGE_URI } from 'app/common/routes/routes.constants';
 import * as cookieParser from 'cookie-parser';
+import {SuppressionService} from "app/common/services/suppression.service";
+import {ConfirmationController} from "app/suppressions/confirmation/confirmation.controller";
+import {PaymentService} from "app/common/services/payment.service";
 @Module({
-  imports: [CommonModule],
+  imports: [CommonModule, HttpModule.registerAsync({
+    useFactory: () => ({
+      timeout: 5000,
+      maxRedirects: 5,
+    }),
+  })],
   controllers: [
     LandingController,
     AddressDetailsController,
@@ -19,8 +27,9 @@ import * as cookieParser from 'cookie-parser';
     DocumentDetailsController,
     ServiceAddressController,
     PaymentController,
+    ConfirmationController
   ],
-  providers: [PaymentReferenceService],
+  providers: [PaymentReferenceService, SuppressionService, PaymentService],
 })
 export class SuppressionsModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

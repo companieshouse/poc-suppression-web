@@ -33,6 +33,7 @@
       <h1 class="govuk-heading-l">You must now pay for the document</h1>
         <p>You will need to make a note of your reference number</p>
 
+      <form method="post">
       <div style="display: inline-flex">
 
         {{ 
@@ -56,10 +57,10 @@
       {{ 
         govukButton({
           text: "Continue to payment",
-          href: next(),
           isStartButton: true
         })    
       }}
+      </form>
 
     </div>
   </div>

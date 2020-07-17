@@ -1,17 +1,33 @@
-import { Controller } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Req, Res,
+} from '@nestjs/common';
 import { PAYMENT_PAGE_URI } from 'app/common/routes/routes.constants';
 import { BaseController } from 'app/common/controllers/base.controller';
 import { NavigationControl } from 'app/common/navigation/navigation-control';
-import { PaymentReferenceService } from 'app/suppressions/payment/payment-reference/payment-reference.service';
-import { ConfigService } from '@nestjs/config';
+import {Suppression} from "app/suppressions/model/suppression.model";
+import {APP_SESSION_DATA_KEY} from "app/app.module";
+import {Session} from "ch-node-session-handler";
+import {Request, Response} from "express";
+import {PaymentService} from "app/common/services/payment.service";
 
+const navigation = new NavigationControl(PAYMENT_PAGE_URI, 'GOV_PAY_URL');
 @Controller(PAYMENT_PAGE_URI)
 export class PaymentController extends BaseController {
-  constructor(private paymentReference: PaymentReferenceService, configService: ConfigService) {
-    super('payment', new NavigationControl(PAYMENT_PAGE_URI, configService.get<string>('GOV_PAY_URL')!));
+  constructor(private paymentService: PaymentService) {
+    super('payment', navigation);
   }
 
-  public onGetModelData(): any {
-    return { reference: this.paymentReference.generateNewReference(7) };
+  @Post()
+  public async onPost(@Req() request: Request, @Res() response: Response): Promise<void> {
+
+    const suppression: Suppression = this.onGetModelData(request);
+    const payUrl: string = await this.paymentService.initPayment(suppression.reference, suppression.documentDetails.companyNumber);
+    response.redirect(payUrl);
+  }
+
+  public onGetModelDataFromSession(session: Session | undefined): Suppression | {} {
+    return session?.getExtraData<Suppression>(APP_SESSION_DATA_KEY) || {};
   }
 }

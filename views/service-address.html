@@ -34,7 +34,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="payment" method="GET">
+        <form method="post">
 
         {% call govukFieldset({
           legend: {
@@ -53,8 +53,10 @@
             },
 
             id: "address-line-1",
-            name: "address-line-1",
-            autocomplete: "address-line1"
+            value: newAddressDetails.addressLine1,
+            name: "addressLine1",
+            autocomplete: "address-line1",
+            errorMessage: validationErrors.addressLine1 if validationErrors
           }) }}
 
         {{ govukInput({
@@ -62,8 +64,10 @@
               html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
             },
             id: "address-line-2",
-            name: "address-line-2",
-            autocomplete: "address-line2"
+            value: newAddressDetails.addressLine2,
+            name: "addressLine2",
+            autocomplete: "address-line2",
+            errorMessage: validationErrors.addressLine2 if validationErrors
           }) }}
 
         {{ govukInput({
@@ -72,8 +76,10 @@
             },
             classes: "govuk-!-width-two-thirds",
             id: "address-town",
-            name: "address-town",
-            autocomplete: "address-level2"
+            value: newAddressDetails.townOrCity,
+            name: "townOrCity",
+            autocomplete: "address-level2",
+            errorMessage: validationErrors.townOrCity if validationErrors
           }) }}
 
         {{ govukInput({
@@ -82,7 +88,9 @@
             },
             classes: "govuk-!-width-two-thirds",
             id: "address-county",
-            name: "address-county"
+            value: newAddressDetails.county,
+            name: "county",
+            errorMessage: validationErrors.county if validationErrors
           }) }}
 
         {{ 
@@ -92,8 +100,10 @@
             },
             classes: "govuk-input--width-10",
             id: "address-postcode",
-            name: "address-postcode",
-            autocomplete: "postal-code"
+            value: newAddressDetails.postCode,
+            name: "postCode",
+            autocomplete: "postal-code",
+            errorMessage: validationErrors.postCode if validationErrors
           })
         }}
 
@@ -103,8 +113,7 @@
 
       {{ 
         govukButton({
-           text: "Continue",
-           href: next()
+           text: "Continue"
          })
       }}
 
